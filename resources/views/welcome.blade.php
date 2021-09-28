@@ -2,5 +2,7 @@
 
 
 @section('content')
+
+Livewire Home page
     
 @endsection

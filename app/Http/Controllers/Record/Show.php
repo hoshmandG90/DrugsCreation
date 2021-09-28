@@ -37,8 +37,6 @@ class Show extends Component
          'category' =>'required|string',
          'note' =>'required|max:255'
      ]);
-
-
      Records::create($Validation_data);
      $this->ShowForm=false;
      $this->dispatchBrowserEvent('success');

@@ -1,6 +1,9 @@
+@font-face {
+    font-family: '60_Sarchia_Makka';
+    src: url('../fonts/60_Sarchia_Makka.ttf');
+}
 *{
-    font-family: 'Roboto Condensed', sans-serif;
-
+    font-family: '60_Sarchia_Makka' !important;
 }
 ::-webkit-scrollbar {
       width: 5px;
@@ -20,6 +23,4 @@
   .radius-20{
       border-radius: 20px !important;
   }
-
-  
   
