@@ -22,6 +22,10 @@ class Show extends Component
  public $NewCategory;
  public $NewNote;
 
+ public $search;
+
+ protected $queryString=['search'];
+
 
  public $RecordsIdBeingRemoved=null;
  protected $listeners=['deletedConfirmed'=>'deletedConfirmed'];
@@ -36,6 +40,7 @@ class Show extends Component
 
 
      Records::create($Validation_data);
+     $this->ShowForm=false;
      $this->dispatchBrowserEvent('success');
 
 
@@ -75,7 +80,7 @@ public function deletedConfirmed(){
  }
  public function render()
     {
-        $records =Records::latest()->get();
+        $records =Records::search($this->search)->latest()->get();
         return view('record.show',compact('records'))->extends('layouts.app');
     }
 }

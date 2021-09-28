@@ -1,9 +1,10 @@
 <div>
-    @section('title','نەخۆش')
+    @section('title','Paitents')
 
 
 
-      
+      <!-- Button trigger modal -->
+
 
 
 

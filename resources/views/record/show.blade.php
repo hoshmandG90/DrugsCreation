@@ -64,7 +64,7 @@
     @endif
 
 
-    <div class="flex justify-content-end mb-3">
+    <div class="flex justify-content-end ">
         <span wire:click="$toggle('ShowForm')" class="btn btn-info "><i class="nav-icon fas fa-plus mr-2"></i>تۆمارکردنی
             ڕەچەتە</span>
 
@@ -72,115 +72,112 @@
 
 
 
-
-    <table class="table text-gray-400   text-sm">
-        <thead class="bg-gray-800 text-gray-500">
-            <tr class="text-white text font-bold ">
-                <th class="p-3 ">ناوی دەرمان</th>
-                <th class="p-3 text-left">جۆری دەرمان</th>
-                <th class="p-3 text-left">تێبینی</th>
-                <th class="p-3 text-left">بەرواری زیادکردن</th>
-                <th class="p-3 text-left"></th>
-            </tr>
-        </thead>
-        <tbody>
-             @foreach ($records as $record)
-                 
-            
-            <tr class="bg-gray-800 s">
-                <td class="">
-
-                    <span><i class="nav-icon fas fa-capsules mr-2 "></i> {{$record->name_drug}}</span>
-                      
-                       
-                    
-                </td>
-                <td class="p-3">
-                    {{$record->category}}
-                </td>
-                <td class="p-3 font-bold">
-                  {{Str::limit($record->note, 20, '...') }}
-                </td>
-                <td class="p-3">
-                    <span class="bg-gray-400 px-4 text-gray-50 py-2 rounded-md px-2">{{$record->created_at->format('Y-m-d')}}</span>
-                </td>
-                <td class="p-3 ">
-
-                    <a href="#"  wire:click.prevent="SelecetdToUpadetd('{{$record->id}}')" data-toggle="modal" data-target="#editModels{{$record->id}}" title="دەستکاریکردن" class="text-gray-400 hover:text-gray-100  mx-2">
-                        <i class="far fa-edit"></i>
-                    </a>
-                    <a href="#" wire:click.prevent="ConfirmRecordsRemoval('{{$record->id}}')" title="سرینەوە" class="text-gray-400 hover:text-gray-100  ml-2">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                </td>
-            </tr>
-            <div class="modal fade" id="editModels{{$record->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self >
-               <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-               <form wire:submit.prevent="update('{{$record->id}}')">
-                   <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">گۆرانکاری لە تۆماری ڕەچەتە</h5>
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                     </button>
-                   </div>
-                   <div class="modal-body">
-                    <div class="form-group">
-                         <label>زیادکردنی ناوی دەرمان</label>
-
-                         <div class="input-group">
-                             <div class="input-group-prepend">
-                                 <span class="input-group-text"><i class="fas fa-prescription-bottle-alt"></i></span>
-                             </div>
-                             <input wire:model="NewName" type="text"
-                                 class="form-control @error('NewName') is-invalid @enderror" placeholder="ناوی دەرمان">
-                         </div>
-                         <!-- /.input group -->
-                     </div>
-                     <!-- /.form group -->
-         
-                     <div class="form-group">
-                         <label>زیادکردنی جۆری دەرمان </label>
-         
-                         <div class="input-group">
-                             <div class="input-group-prepend">
-                                 <span class="input-group-text"><i class="fas fa-pills"></i></span>
-                             </div>
-                             <input wire:model.defer="NewCategory" type="text"
-                                 class="form-control  @error('NewCategory') is-invalid @enderror" placeholder="جۆری دەرمان">
-                         </div>
-                         <!-- /.input group -->
-                     </div>
-                     <!-- /.form group -->
-         
-                     <!-- phone mask -->
-                     <div class="form-group">
-                         <label>زیادکردنی تێبینی 📝</label>
-         
-                         <div class="input-group">
-                             <div class="input-group-prepend">
-                             </div>
-                             <textarea wire:model.defer="NewNote" class="form-control  @error('NewNote') is-invalid @enderror" id="" cols="10"
-                                 placeholder="تێبینی بەکارهێنان" rows="5"></textarea>
-                         </div>
-                         <!-- /.input group -->
-                     </div>
-                   </div>
-                   <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">  <i class="nav-icon fas fa-times"></i> داخستن</button>
-                     <button  class="btn btn-warning" id="close"  >
-                         <i class="nav-icon fas fa-save"></i> گۆرانکاری</button>
-                   </div>
-                 </div>
-               </form>
-               </div>
+   <section class="py-1 bg-blueGray-50">
+     <div class="w-full   px-4 mx-auto mt-4">
+       <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+         <div class="rounded-t mb-0 px-4 py-3 border-0">
+           <div class="flex flex-wrap items-center">
+             <div class="relative w-full  max-w-full flex-grow flex-1">
+                  <input type="text" wire:model="search" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="گەڕان">
              </div>
-            @endforeach
+             
+           </div>
+         </div>
+     
+         <div class="block w-full overflow-x-auto">
+           <table class="items-center bg-transparent w-full border-collapse ">
+                
+               @if ($records->IsNotEmpty())
+             <thead>
+               <tr >
+                 <th class="px-6 bg-blueGray-50 text-gray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                               ناوی دەرمان
+                             </th>
+               <th class="px-6 bg-blueGray-50 text-gray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                               جۆری دەرمان </
+                             </th>
+                <th class="px-6 bg-blueGray-50 text-gray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                تێبینی بەکارهێنان
+                             </th>
+               <th class="px-6 bg-blueGray-50 text-gray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                               بەرواری زیادکردن
+                             </th>
+                             <th class="px-6 bg-blueGray-50 text-gray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            </th>
+               </tr>
+               
+            
+             </thead>
+     
+             <tbody>
+
+                   
            
-        </tbody>
-    </table>
+               @foreach ($records as $record)
+           
+               <tr>
+                 <th class=" px-6 align-middle border  text-xs  p-4 text-left ">
+                 {{$record->name_drug}}
+                 </th>
+                 <td class=" px-6 align-middle border  text-xs  p-4">
+                 {{$record->category}}
+                 </td>
+                 <td class=" px-6 align-middle border  text-xs  p-4">
+                {{Str::limit($record->note,20,'...')}}
+                 </td>
+                 <td class="border-t-0 px-6 align-middle border  text-xs  p-4">
+                   <i class="fas fa-arrow-up text-orange-500 mr-4"></i>
+                 {{$record->created_at->format('Y-m-d')}}
+                 </td>
+                 <td class=" px-6 align-middle border  text-xs  p-4">
+                    <a href="#"  wire:click.prevent="SelecetdToUpadetd('{{$record->id}}')" title="دەستکاریکردن" data-bs-toggle="modal" data-bs-target="#editModel{{$record->id}}" class="text-gray-400 hover:text-gray-100  mx-2">
+                         <i class="far fa-edit text-purple-400"></i>
+                     </a>
+                     <a href="#" wire:click.prevent="ConfirmRecordsRemoval('{{$record->id}}')" title="سرینەوە" class="text-gray-400 hover:text-gray-100  ml-2">
+                         <i class="fas fa-trash-alt text-red-500"></i>
+                     </a>  
+                    </td>
+             
+               </tr>              
+                  <!-- Edit Modal -->
+                  <div  wire:ignore.self class="modal fade" id="editModel{{$record->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                         <form  wire:submit.prevent="update('{{$record->id}}')">
+                              @csrf
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-white" id="exampleModalLabel">گۆرانکاری  تۆماری ڕەچەتە</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body ">
+                          <input type="text" class="form-control my-2 rounded-lg " wire:model.defer="NewName" placeholder="">
+                          <input type="text" class="form-control my-2 rounded-lg " wire:model.defer="NewCategory" placeholder="">
 
-   <!-- Modal -->
+                          <textarea name=""  class="form-control my-2 rounded-lg " wire:model.defer="NewNote"id="" cols="8" rows="6"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">نەخێر</button>
+                          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">بەڵی</button>
+                        </div>
+                      </div>
+                      
+                         </form>
+                    </div>
+                  </div>
+             
 
-  
+               
+               @endforeach
+               @else
+               <span class="d-flex justify-content-center my-2 text-red-400 ">هیچ داتایەك نەدۆزرایەوە</span>
+        @endif
+             </tbody>
+     
+           </table>
+         </div>
+       </div>
+     </div>
+
+     </section>
+     
 </div>

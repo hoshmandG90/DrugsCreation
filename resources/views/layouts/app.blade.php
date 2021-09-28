@@ -136,7 +136,17 @@
     <section class="content" >
       <div class="container-fluid mx-auto" style="margin-top:80px">
           @yield('content')
- 
+          <footer class="relative pt-8 pb-6 mt-16">
+            <div class="container mx-auto px-4">
+              <div class="flex flex-wrap items-center md:justify-between justify-center">
+                <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+                  <div class="text-sm text-blueGray-500 font-semibold py-1">
+                    Made with <a href="https://www.facebook.com/ZingSoft" class="text-blueGray-500 hover:text-gray-800" target="_blank">ZingSoft </a> by <a href="https://www.facebook.com/hoshman12" class="text-blueGray-500 hover:text-blueGray-800" target="_blank">Hoshmand Kamal</a>.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
       </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
@@ -145,6 +155,7 @@
 
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
