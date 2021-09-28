@@ -99,7 +99,7 @@
                     {{$record->category}}
                 </td>
                 <td class="p-3 font-bold">
-                  {{$record->note}}
+                  {{Str::limit($record->note, 20, '...') }}
                 </td>
                 <td class="p-3">
                     <span class="bg-gray-400 px-4 text-gray-50 py-2 rounded-md px-2">{{$record->created_at->format('Y-m-d')}}</span>
@@ -168,7 +168,7 @@
                    </div>
                    <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-dismiss="modal">  <i class="nav-icon fas fa-times"></i> داخستن</button>
-                     <button type="submit" class="btn btn-warning" @if($closeModel) data-dismiss="modal"   @endif >
+                     <button  class="btn btn-warning" id="close"  >
                          <i class="nav-icon fas fa-save"></i> گۆرانکاری</button>
                    </div>
                  </div>
@@ -182,4 +182,5 @@
 
    <!-- Modal -->
 
+  
 </div>

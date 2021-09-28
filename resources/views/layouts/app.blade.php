@@ -196,15 +196,6 @@ window.addEventListener('success-deleted',event => {
 })
 
 
-window.addEventListener('success-updated',event => {
-
-  Swal.fire(
-      'سەرکەوتبوو',
-      'بەسەرکەوتووی گۆرانکاریەکە کرا',
-      'success'
-    )
-})
-
 
 </script>
 

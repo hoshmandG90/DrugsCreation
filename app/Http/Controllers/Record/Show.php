@@ -10,8 +10,6 @@ class Show extends Component
 
  public $ShowForm=false;
 
- // Close The Models
- public $closeModel=false;
 
 
  //insert record
@@ -74,9 +72,6 @@ public function deletedConfirmed(){
         'note'=>$this->NewNote,
     ]);
 
-    $this->closeModel=true;
-    $this->dispatchBrowserEvent('success-updated');
-    
  }
  public function render()
     {
