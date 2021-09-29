@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Record;
+use Livewire\WithPagination;
 
 use Livewire\Component;
 use App\Models\Records;
 class Show extends Component
 {
+
+    use WithPagination;
 
 
  public $ShowForm=false;
@@ -38,8 +41,9 @@ class Show extends Component
          'note' =>'required|max:255'
      ]);
      Records::create($Validation_data);
-     $this->ShowForm=false;
-     $this->dispatchBrowserEvent('success');
+     session()->flash('message', 'بە سەرکەوتووی زیادکرا');
+
+     
 
 
  }
@@ -78,7 +82,7 @@ public function deletedConfirmed(){
  }
  public function render()
     {
-        $records =Records::search($this->search)->latest()->get();
+        $records =Records::search($this->search)->latest()->paginate(20);
         return view('record.show',compact('records'))->extends('layouts.app');
     }
 }
