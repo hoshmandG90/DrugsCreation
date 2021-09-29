@@ -19,6 +19,9 @@
     
     @livewireScripts
     @livewireStyles
+    <script src="{{asset('assets/js/turbolinks.js')}}"></script>
+    <script src="{{asset('assets/js/turbolinks.min.js')}}"></script>
+
 
 
 </head>
@@ -29,7 +32,7 @@
     <section class="container  px-6 my-1 flex flex-wrap  justify-center items-center">
         <div class="p-2 col-lg-3 col-sm ">
             <a href="{{route('record')}}"
-                class="flex items-center p-4 bg-blue-200 rounded-lg shadow-xs cursor-pointer hover:bg-blue-500 hover:text-gray-100">
+                class="flex items-center p-4 bg-blue-200 rounded-lg shadow-xs cursor-pointer {{request()->is('record') ? ' bg-blue-500 text-gray-100' : 'hover:bg-blue-500 hover:text-gray-100'}} ">
                 <img src="{{asset('assets/img/create.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
                 <div>
                     <p class="text-xs font-medium ml-2">
@@ -40,8 +43,8 @@
             </a>
         </div>
         <div class="p-2 col-lg-3 col-sm ">
-            <div
-                class="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs cursor-pointer hover:bg-gray-500 hover:text-gray-100">
+            <a href="{{route('medicine')}}"
+                class="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs cursor-pointer {{request()->is('medicine') ? 'bg-gray-500 text-gray-100' : ' hover:bg-gray-500 hover:text-gray-100'}}">
 
                 <img src="{{asset('assets/img/drug.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
                 <div>
@@ -50,7 +53,7 @@
                     </p>
 
                 </div>
-            </div>
+            </a>
         </div>
         <div class="p-2 col-lg-3 col-sm  ">
             <div
@@ -124,7 +127,7 @@
         @yield('content')
         <div class="container-fluid mx-auto" style="margin-top:80px">
 
-            <footer class="relative pt-8 pb-6 mt-16">
+            <footer class="relative pt-8 pb-6 mt-8">
                 <div class="container mx-auto px-4">
                     <div class="flex flex-wrap items-center md:justify-between justify-center">
                         <div class="w-full md:w-6/12 px-4 mx-auto text-center">
@@ -153,7 +156,6 @@
 
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap -->

@@ -25,12 +25,18 @@ class Show extends Component
  public $NewCategory;
  public $NewNote;
 
- public $search;
-
- protected $queryString=['search'];
 
 
+
+ public $ShowModelEdit=false;
+ public $RecordsIdBeingUpdated=null;
  public $RecordsIdBeingRemoved=null;
+
+ public $search;
+ protected $queryString=['search'];
+ 
+
+
  protected $listeners=['deletedConfirmed'=>'deletedConfirmed'];
 
 
@@ -41,7 +47,7 @@ class Show extends Component
          'note' =>'required|max:255'
      ]);
      Records::create($Validation_data);
-     session()->flash('message', 'بە سەرکەوتووی زیادکرا');
+     session()->flash('message', 'بە سەرکەوتووی تۆمار کرا');
 
      
 
@@ -67,17 +73,26 @@ public function deletedConfirmed(){
 
  }
  public function update(Records $record){
+ 
+    $this->NewName =$record->name_drug;
+    $this->NewCategory=$record->category;
+    $this->NewNote=$record->note;
+    $this->RecordsIdBeingUpdated=$record->id;
+
+ }
+
+ public function EditRecord(Records $record){
     $this->Validate([
         'NewName' =>'required|string',
         'NewCategory' =>'required|string',
         'NewNote' =>'required|max:255'
     ]);
-
-    $record->update([
-        'name_drug' =>$this->NewName,
-        'category'=>$this->NewCategory,
-        'note'=>$this->NewNote,
-    ]);
+  $record->update([
+    'name_drug' =>$this->NewName,
+    'category' =>$this->NewCategory,
+    'note' =>$this->NewNote
+  ]);
+  session()->flash('message', 'بە سەرکەوتووی تۆمار کرا');
 
  }
  public function render()

@@ -21,4 +21,4 @@ Route::get('/', function () {
 Route::get('/record',App\Http\Controllers\Record\show::class)->name('record');
 
 
-Route::get('/paitent',App\Http\Controllers\Paitents\show::class)->name('paitent');
+Route::get('/medicine',App\Http\Controllers\Components\Create::class)->name('medicine');
