@@ -14,5 +14,7 @@
 
 @livewire('components.prints')
 
+
+
 </body>
 </html>

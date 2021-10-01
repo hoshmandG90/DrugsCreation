@@ -129,7 +129,7 @@
             @endif
         </table>
         <div class="bg-gray-200 text-gray-600  px-2 py-2 uppercase text-sm leading-normal">
-            <span></span>
+            <span>{{$Stocks->links()}}</span>
         </div>
     </div>
 

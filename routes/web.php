@@ -26,6 +26,8 @@ Route::get('/medicine',App\Http\Controllers\Components\index::class)->name('medi
 Route::get('/show',App\Http\Controllers\Components\Show::class)->name('show');
 
 
+Route::get('/report',App\Http\Controllers\Components\Report::class)->name('report');
+
 Route::get('/invoice',function(){
     return view('invoice');
 })->name('invoice');

@@ -70,8 +70,8 @@
             </a>
         </div>
         <div class="p-2 md:w-40 ">
-            <div
-                class="flex items-center p-4 bg-red-200 rounded-lg shadow-xs cursor-pointer hover:bg-red-500 hover:text-gray-100">
+            <a href="{{route('report')}}"
+                class="flex items-center p-4 bg-red-200 rounded-lg shadow-xs cursor-pointer {{request()->is('report') ? 'bg-red-500 text-gray-100' :'hover:bg-red-500 hover:text-gray-100'}} ">
 
                 <img src="{{asset('assets/img/report.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
                 <div>
@@ -80,7 +80,7 @@
                     </p>
 
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="p-2 col-lg-3 col-sm  ">
