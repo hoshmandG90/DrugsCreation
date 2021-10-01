@@ -1,9 +1,9 @@
 @font-face {
-    font-family: 'rudaw';
-    src: url('../fonts/rudaw.ttf');
+    font-family: 'Speda-Bold';
+    src: url('../fonts/Speda-Bold.ttf');
 }
 *{
-    font-family: 'rudaw' !important;
+    font-family: 'Speda-Bold' !important;
 }
 ::-webkit-scrollbar {
       width: 5px;

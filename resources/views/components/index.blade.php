@@ -204,14 +204,14 @@
                     @if ($Medicines->IsNotEmpty())
                     <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-left">ناوی نەخۆش</th>
+                            <th class="py-3 px-6 truncate text-left">ناوی نەخۆش</th>
 
-                            <th class="py-3 px-6 text-left">ناوی دەرمان</th>
-                            <th class="py-3 px-6 text-left">جۆری دەرمان</th>
-                            <th class="py-3 px-6 text-left">ژمارەی دانە</th>
+                            <th class="py-3 px-6 truncate text-left">ناوی دەرمان</th>
+                            <th class="py-3 px-6 truncate text-left">جۆری دەرمان</th>
+                            <th class="py-3 px-6 truncate text-left">ژمارەی دانە</th>
 
-                            <th class="py-3 px-6 text-left">تێبینی بەکارهێنان</th>
-                            <th class="py-3 px-6 text-left">بەرواری زیادکردن</th>
+                            <th class="py-3 px-6 truncate text-left">تێبینی بەکارهێنان</th>
+                            <th class="py-3 px-6 truncate text-left">بەرواری زیادکردن</th>
 
 
                             <th class="py-3 px-6 text-left"> 
@@ -240,33 +240,33 @@
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-left">
-                                <div class=" items-center">
+                                <div class=" truncate items-center">
 
                                     <span>{{$Medicine->name_medicine}} </span>
                                 </div>
                             </td>
 
                             <td class="py-3 px-6 text-left">
-                                <div class=" items-center">
+                                <div class="truncate items-center">
 
                                     <span>{{$Medicine->types}} </span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-left">
-                                <div class=" items-center">
+                                <div class="truncate items-center">
 
                                     <span>{{$Medicine->count}} </span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-left">
-                                <div class=" items-center">
+                                <div class=" truncate items-center">
 
-                                    <span>{{$Medicine->note}} </span>
+                                    <span>{{Str::limit($Medicine->note,20,'...')}}</span>
                                 </div>
                             </td>
 
                             <td class="py-3 px-6 text-left">
-                                <div class=" items-center">
+                                <div class=" truncate items-center">
 
                                     <span>{{$Medicine->created_at->format("Y-m-d")}} </span>
                                 </div>
