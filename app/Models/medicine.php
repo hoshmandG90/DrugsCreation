@@ -10,4 +10,8 @@ class medicine extends Model
     protected $guarded =[];
     protected $table="medicines";
 
+    public static function search($search){
+        return empty($search) ? static::query() :
+        static::where('patinet_name','LIKE','%'.$search.'%');
+        }
 }
