@@ -20,7 +20,6 @@ class index extends Component
     public $notes;
 
     public $ShowMedcinie=false;
-    public $ShowPages=false;
 
     public $search;
 
@@ -71,6 +70,10 @@ class index extends Component
        Medicine::query()->truncate();
     }
 
+    public function back(){
+        return redirect()->to(route('medicine'));
+        
+    }
 
 
 

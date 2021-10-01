@@ -56,8 +56,8 @@
             </a>
         </div>
         <div class="p-2 col-lg-3 col-sm  ">
-            <div
-                class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100">
+            <a href="{{route('show')}}"
+                class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer {{request()->is('show') ? 'bg-green-500 text-gray-100' : 'hover:bg-green-500 hover:text-gray-100'}} ">
                 <img src="{{asset('assets/img/checklist.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
 
                 <div>
@@ -67,8 +67,22 @@
                     </p>
 
                 </div>
+            </a>
+        </div>
+        <div class="p-2 md:w-40 ">
+            <div
+                class="flex items-center p-4 bg-red-200 rounded-lg shadow-xs cursor-pointer hover:bg-red-500 hover:text-gray-100">
+
+                <img src="{{asset('assets/img/report.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
+                <div>
+                    <p class=" text-xs font-medium ml-2 ">
+                        بەشی ڕاپۆرت
+                    </p>
+
+                </div>
             </div>
         </div>
+
         <div class="p-2 col-lg-3 col-sm  ">
             <div
                 class="flex items-center p-4 bg-yellow-200 rounded-lg shadow-xs cursor-pointer hover:bg-yellow-500 hover:text-gray-100">
@@ -105,20 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="p-2 md:w-40 ">
-            <div
-                class="flex items-center p-4 bg-red-200 rounded-lg shadow-xs cursor-pointer hover:bg-red-500 hover:text-gray-100">
-
-                <img src="{{asset('assets/img/report.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
-                <div>
-                    <p class=" text-xs font-medium ml-2 ">
-                        بەشی ڕاپۆرت
-                    </p>
-
-                </div>
-            </div>
-        </div>
-
+    
 
     </section>
 
@@ -162,6 +163,17 @@
     <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('dist/js/adminlte.js')}}"></script>
 
+
+    <script>
+        $(".sound").on("click", function(){
+            var Sound=document.createElement("audio");
+            Sound.src="assets/sound/add.mp3";
+            Sound.play();  
+        });
+    
+
+  
+</script>
     {{-- SweetAlert --}}
     <script src="{{asset('plugins/sweetalert2/sweetalert2.all.js')}}"></script>
 
@@ -206,6 +218,14 @@
         })
 
     </script>
+
+<script>
+    $(".delete").on('click',function(){
+        var sound=document.createElement('audio');
+        sound.src="assets/sound/clear.mp3";
+        sound.play();
+  })
+</script>
 
 
 </body>

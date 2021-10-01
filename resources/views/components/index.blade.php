@@ -26,22 +26,8 @@
                     </div>
 
                 </div>
-                <div wire:click.prevent="$toggle('ShowPages')" class="p-1">
-                    <div
-                        class="flex items-center p-2 bg-red-200 rounded-lg  cursor-pointer hover:bg-red-500 hover:text-red-100">
-                        <img src="{{asset('assets/img/search.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
-
-                        <div>
-                            <p class=" text-xs font-medium ml-2 ">
-
-                                لیستی  گەڕان
-                            </p>
-
-                        </div>
-                    </div>
-
-                </div>
-                <a  href="{{route('invoice')}}" class="p-1">
+         
+                <a  onclick="print('invoice')" wire:click=back class="p-1">
                     <div
                         class="flex items-center p-2 bg-indigo-200 rounded-lg  cursor-pointer  c hover:bg-indigo-500 hover:text-indigo-100">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -67,13 +53,13 @@
                 </a>
                 <span  class="p-1">
                     <div
-                        class="flex items-center p-2 bg-indigo-200 rounded-lg  cursor-pointer ">
+                        class="flex items-center p-2  bg-indigo-200 rounded-lg  cursor-pointer  ">
                        
 
                         <div>
                             <p class=" text-xs font-medium ml-2 ">
 
-                              <input type="text"  value="{{$invoice_id->id}}" > <span> ژمارەی پسوڵە </span>  
+                              {{$invoice_id->id}} <span> ژمارەی پسوڵە </span>  
                             </p>
 
                         </div>
@@ -82,8 +68,8 @@
                 </span>
 
                 <span  class="p-1">
-                    <div wire:click="ResetInvoices"
-                        class="flex items-center p-2 bg-indigo-200 rounded-lg  cursor-pointer ">
+                    <div  wire:click="ResetInvoices"
+                        class="flex items-center p-2 bg-red-200  rounded-lg cursor-pointer hover:bg-red-500 hover:text-red-100 delete ">
                        
 
                         <div>
@@ -101,19 +87,7 @@
             
             </div>
              
-                  @if ($ShowPages)
-                  <div class="flex flex-wrap  justify-end  m-2 space-x-1">
-                    <div class="pt-2 relative text-gray-600">
-                        <input
-                            class="border-2 border-gray-300 bg-white h-10  px-5 pr-16 rounded-lg text-sm focus:outline-none focus:border-purple-500"
-                            type="search" wire:model="search" placeholder="ناوی نەخۆش">
-                        <a class="absolute right-0 top-0  mt-5 mr-4">
-                            <img class="img-fluid w-4 h-4 " src="{{asset('assets/img/pills.svg')}}" alt="">
-            
-                        </a>
-                    </div>
-                </div>
-                  @else
+              
                  
                   @if ($ShowMedcinie)
 
@@ -223,7 +197,6 @@
                 </form> 
                   
                   @endif
-                  @endif
                  
             </div>
             <div class=" shadow-md rounded my-6">
@@ -241,7 +214,14 @@
                             <th class="py-3 px-6 text-left">بەرواری زیادکردن</th>
 
 
-                            <th class="py-3 px-6 text-left"></th>
+                            <th class="py-3 px-6 text-left"> 
+                                <div 
+                                    class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                      </svg>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-600 text-sm font-light">
@@ -292,11 +272,11 @@
                                 </div>
                             </td>
 
-                            <td wire:click.prevent="delete('{{$Medicine->id}}')" class="py-3 px-6 text-left" >
+                            <td wire:click.prevent="delete('{{$Medicine->id}}')" class="py-3 px-6 text-left"  >
                                 <div class="flex item-center ">
 
                                   
-                                    <div 
+                                    <div  class="delete"
                                         class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -304,6 +284,7 @@
                                     </div>
                                 </div>
                             </td>
+                         
                         </tr>
 
                         @endforeach
@@ -322,4 +303,5 @@
         </div>
     </div>
 </div>
+
 

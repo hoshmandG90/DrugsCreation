@@ -1,9 +1,9 @@
 @font-face {
-    font-family: '60_Sarchia_Makka';
-    src: url('../fonts/60_Sarchia_Makka.ttf');
+    font-family: 'rudaw';
+    src: url('../fonts/rudaw.ttf');
 }
 *{
-    font-family: '60_Sarchia_Makka' !important;
+    font-family: 'rudaw' !important;
 }
 ::-webkit-scrollbar {
       width: 5px;

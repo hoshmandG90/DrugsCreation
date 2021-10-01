@@ -13,7 +13,7 @@
                             <img src="{{asset('assets/img/plus.svg')}}" class="img-responsive w-5 h-4 mr-2" alt="">
 
                             <div>
-                                <p class=" text-xs font-medium ml-2 ">
+                                <p class="sound" class="text-xs font-medium ml-2 ">
 
                                     بەشی زیادکردن
                                 </p>
@@ -21,6 +21,8 @@
                             </div>
                         </div>
                     </button>
+
+                   
 
                     <button wire:click.prevent="$toggle('ShowForm')" class="p-2 col-lg-3 col-sm  ">
                         <div
@@ -36,7 +38,7 @@
                             </div>
                         </div>
                     </button>
-
+   
 
 
 
